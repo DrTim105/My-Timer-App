@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.salihutimothy.mytimerapp">
 
     <application
@@ -13,10 +14,22 @@
             android:name=".TimerExpiredReceiver"
             android:enabled="true"
             android:exported="false" />
+        <receiver
+            android:name=".TimerNotificationActionReceiver"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="stop" />
+                <action android:name="pause" />
+                <action android:name="resume" />
+                <action android:name="start" />
+            </intent-filter>
+        </receiver>
 
         <activity
             android:name=".MainActivity"
             android:exported="true"
+            tools:node="merge"
             android:label="@string/app_name"
             android:theme="@style/Theme.MyTimerApp.NoActionBar">
             <intent-filter>

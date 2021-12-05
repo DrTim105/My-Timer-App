@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.ui.AppBarConfiguration
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.salihutimothy.mytimerapp.databinding.ActivityMainBinding
+import com.salihutimothy.mytimerapp.util.NotificationUtil
 import com.salihutimothy.mytimerapp.util.PrefUtil
 import me.zhanghai.android.materialprogressbar.MaterialProgressBar
 import java.util.*
@@ -96,6 +97,9 @@ class MainActivity : AppCompatActivity() {
         initTimer()
 
         removeAlarm(this)
+
+        NotificationUtil.hideTimerNotification(this)
+
     }
 
     override fun onPause() {
@@ -104,8 +108,10 @@ class MainActivity : AppCompatActivity() {
         if (timerState == TimerState.Running) {
             timer.cancel()
             val wakeUpTime = setAlarm(this, nowSeconds, secondsRemaining)
-        } else if (timerState == TimerState.Paused) {
+            NotificationUtil.showTimerRunning(this, wakeUpTime)
 
+        } else if (timerState == TimerState.Paused) {
+            NotificationUtil.showTimerPaused(this)
         }
 
         PrefUtil.setPreviousTimerLengthSeconds(timerLengthSeconds, this)
