@@ -1,13 +1,11 @@
 package com.salihutimothy.mytimerapp.util
 
 import android.annotation.TargetApi
-import android.app.NotificationChannel
-import android.app.NotificationManager
-import android.app.PendingIntent
-import android.app.TaskStackBuilder
+import android.app.*
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
+import android.media.MediaPlayer
 import android.media.RingtoneManager
 import android.net.Uri
 import android.os.Build
@@ -113,7 +111,7 @@ class NotificationUtil {
             playSound: Boolean
         )
                 : NotificationCompat.Builder {
-            val notificationSound: Uri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM)
+            val notificationSound: Uri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
 
             val nBuilder = NotificationCompat.Builder(context, channelId)
                 .setSmallIcon(R.drawable.ic_placeholder)
@@ -121,6 +119,8 @@ class NotificationUtil {
                 .setDefaults(0)
             if (playSound) nBuilder.setSound(notificationSound)
 
+//            val mp: MediaPlayer = MediaPlayer.create(context, R.raw.alarm_beep)
+//            mp.start()
             return nBuilder
         }
 

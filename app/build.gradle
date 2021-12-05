@@ -8,7 +8,7 @@ android {
 
     defaultConfig {
         applicationId "com.salihutimothy.mytimerapp"
-        minSdk 21
+        minSdk 19
         targetSdk 31
         versionCode 1
         versionName "1.0"
@@ -50,4 +50,5 @@ dependencies {
     implementation 'me.zhanghai.android.materialprogressbar:library:1.4.2'
     implementation 'androidx.preference:preference-ktx:1.1.1'
     implementation 'com.pavelsikun:material-seekbar-preference:2.3.0'
+    implementation 'com.sdsmdg.harjot:croller:1.0.7'
 }

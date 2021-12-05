@@ -10,6 +10,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyTimerApp">
+        <activity
+            android:name=".SettingsActivity"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/Theme.MyTimerApp.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+
         <receiver
             android:name=".TimerExpiredReceiver"
             android:enabled="true"
@@ -29,9 +38,9 @@
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            tools:node="merge"
             android:label="@string/app_name"
-            android:theme="@style/Theme.MyTimerApp.NoActionBar">
+            android:theme="@style/Theme.MyTimerApp.NoActionBar"
+            tools:node="merge">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
